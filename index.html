@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exambro - SMPN 1 Damai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --primary: #1e3a8a; --secondary: #3b82f6; --dark: #0f172a; --light: #f8fafc; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+        header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; text-align: center; padding: 60px 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; }
+        header p { font-size: 1.1rem; opacity: 0.9; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .btn-download { display: inline-flex; align-items: center; gap: 10px; background-color: #22c55e; color: white; text-decoration: none; padding: 15px 30px; font-size: 1.2rem; font-weight: 600; border-radius: 50px; margin-top: 25px; box-shadow: 0 10px 15px -3px rgba(34,197,94,0.4); transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-download:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(34,197,94,0.4); }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; }
+        .card h2 { color: var(--primary); font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        ol, ul { padding-left: 20px; }
+        li { margin-bottom: 12px; font-size: 1rem; color: #334155; }
+        li strong { color: var(--dark); }
+        .highlight { background-color: #fee2e2; color: #dc2626; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-weight: bold; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.95rem; margin: 15px 0; overflow-x: auto; border-left: 5px solid var(--secondary); }
+        .code-box span { color: #f43f5e; }
+        footer { text-align: center; margin-top: 60px; padding: 20px; color: #64748b; font-size: 0.9rem; border-top: 1px solid #e2e8f0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="font-size: 3.5rem; margin-bottom: 10px;"><i class="fa-solid fa-shield-halved"></i></div>
+        <h1>SMPN 1 DAMAI EXAMBRO</h1>
+        <p>Aplikasi Ujian Resmi Android - Aman, Ringan, dan Berintegritas</p>
+        
+        <a href="https://github.com/alfisjahri/SMPN_1_Damai_Exambro/releases/download/1.0.0/SMPN1Damai-Exambro-v1.0.apk" class="btn-download">
+            <i class="fa-solid fa-cloud-arrow-down"></i> Download APK Sekarang
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            
+            <div class="card">
+                <h2><i class="fa-solid fa-user-graduate"></i> Panduan Siswa (Download & Instal)</h2>
+                <ol>
+                    <li>Klik tombol <strong>Download APK Sekarang</strong> di atas langsung dari HP Android kamu.</li>
+                    <li>Setelah selesai mengunduh, buka file APK untuk menginstal.</li>
+                    <li>Jika sistem memblokir, masuk ke <strong>Setelan / Settings</strong> lalu aktifkan opsi <strong>Izinkan dari sumber ini (Allow from this source)</strong>.</li>
+                    <li>Buka aplikasi Exambro setelah berhasil terpasang.</li>
+                    <li><strong>Wajib:</strong> Berikan izin akses kamera saat aplikasi meminta agar scanner QR berfungsi.</li>
+                    <li>Saat dialog sistem meminta mode kunci layar <i>(Screen Pinning)</i>, kamu <strong>WAJIB klik OKE / IZINKAN</strong>. Menolak mode kunci akan memicu alarm pelanggaran otomatis.</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h2><i class="fa-solid fa-chalkboard-teacher"></i> Panduan Guru (Custom Password)</h2>
+                <p style="margin-bottom: 15px; color: #475569;">Sandi darurat bawaan untuk keluar dari aplikasi adalah <span class="highlight">guru123</span>. Guru/Panitia dapat mengatur sandi penutup yang unik untuk tiap sesi ujian langsung melalui tautan soal.</p>
+                
+                <h3>Cara Modifikasi Tautan Ujian:</h3>
+                <p style="margin-top: 5px;">Sisipkan teks <span class="highlight">?pwd=sandi_pilihan_anda</span> tepat di ujung link Google Forms atau web ujian sebelum diubah menjadi QR Code.</p>
+                
+                <div class="code-box">
+                    https://docs.google.com/forms/.../viewform<span>?pwd=ujianselesai</span>
+                </div>
+
+                <ul>
+                    <li>Jika siswa memindai QR hasil tautan di atas, sandi keluar otomatis berubah menjadi: <strong>ujianselesai</strong>.</li>
+                    <li><strong>Sifat Sandi:</strong> Bersifat sensitif terhadap huruf besar/kecil (*case-sensitive*).</li>
+                    <li>Gunakan tautan penuh yang sudah dimodifikasi ke platform pembuat QR Code gratis pilihan Anda, lalu cetak untuk diberikan kepada siswa di ruang ujian.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Tim IT SMPN 1 Damai. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
