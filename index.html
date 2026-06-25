@@ -4,104 +4,283 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Exambro - SMPN 1 Damai</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        :root { --primary: #1e3a8a; --secondary: #3b82f6; --dark: #0f172a; --light: #f8fafc; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        
-        /* Cegah layar geser ke samping */
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; overflow-x: hidden; width: 100%; }
-        
-        header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; text-align: center; padding: 50px 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; }
-        header h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; line-height: 1.2; word-wrap: break-word; }
-        header p { font-size: 1.1rem; opacity: 0.9; margin-top: 10px; padding: 0 10px; }
-        
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; width: 100%; }
-        
-        .btn-download { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background-color: #22c55e; color: white; text-decoration: none; padding: 15px 30px; font-size: 1.2rem; font-weight: 600; border-radius: 50px; margin-top: 25px; box-shadow: 0 10px 15px -3px rgba(34,197,94,0.4); transition: transform 0.2s, box-shadow 0.2s; }
-        .btn-download:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(34,197,94,0.4); }
-        
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-        
-        .card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; width: 100%; overflow: hidden; }
-        .card h2 { color: var(--primary); font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; line-height: 1.3; }
-        
-        ol, ul { padding-left: 20px; }
-        li { margin-bottom: 12px; font-size: 1rem; color: #334155; }
-        li strong { color: var(--dark); }
-        
-        .highlight { background-color: #fee2e2; color: #dc2626; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-weight: bold; word-break: break-all; }
-        .code-box { background: #1e293b; color: #38bdf8; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.95rem; margin: 15px 0; overflow-x: auto; border-left: 5px solid var(--secondary); white-space: nowrap; }
-        .code-box span { color: #f43f5e; }
-        
-        footer { text-align: center; margin-top: 50px; padding: 20px; color: #64748b; font-size: 0.9rem; border-top: 1px solid #e2e8f0; width: 100%; }
+        /* Reset & Font Base dari Web Perpus */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
 
-        /* JURUS SAKTI TAMPILAN HP (MOBILE RESPONSIVE) */
-        @media (max-width: 768px) { 
-            .grid { grid-template-columns: 1fr; gap: 20px; margin-top: 25px; } 
-            header { padding: 40px 15px; }
-            header .fa-shield-halved { font-size: 2.5rem !important; }
-            header h1 { font-size: 1.8rem; }
-            header p { font-size: 0.95rem; }
-            .container { margin: 20px auto; }
-            .card { padding: 20px; }
-            .card h2 { font-size: 1.25rem; }
-            .btn-download { font-size: 1rem; padding: 12px 20px; width: 95%; max-width: 350px; }
-            li { font-size: 0.95rem; }
+        /* Latar Belakang Mesh Gradient (Sama dengan Perpus) */
+        body {
+            background-color: #f4f4f9;
+            background-image: 
+                radial-gradient(at 20% 20%, rgba(56, 189, 248, 0.6) 0px, transparent 50%),
+                radial-gradient(at 80% 10%, rgba(167, 139, 250, 0.6) 0px, transparent 50%),
+                radial-gradient(at 10% 80%, rgba(251, 146, 60, 0.5) 0px, transparent 50%),
+                radial-gradient(at 90% 90%, rgba(52, 211, 153, 0.5) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: #1e293b;
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Efek Kaca (Glassmorphism) */
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 10px 30px 0 rgba(0, 0, 0, 0.1), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.5);
+            border-radius: 24px;
+        }
+
+        /* Hero Section (Atas) */
+        .hero {
+            text-align: center;
+            padding: 4rem 20px 2rem;
+            margin: 2rem auto;
+            max-width: 900px;
+        }
+
+        .hero-logos {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Desain Logo Sekolah Ala Perpus */
+        .hero-logos img {
+            height: 110px;
+            width: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 5px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 2px solid rgba(255,255,255,0.9);
+            transition: transform 0.3s ease;
+        }
+        .hero-logos img:hover { transform: scale(1.05); }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .npp-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Animasi Tombol Download */
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #10b981;
+            border: 2px solid #34d399;
+            color: white;
+            text-decoration: none;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 800;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .btn-download:hover {
+            background: #059669;
+            transform: scale(1.05) translateY(-2px);
+            animation: none;
+        }
+
+        /* Grid Panduan */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 4rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .box-kaca {
+            padding: 2.5rem;
+        }
+
+        .box-kaca h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 2px solid rgba(0,0,0,0.05);
+            padding-bottom: 1rem;
+        }
+
+        ol.list-rapi, ul.list-rapi {
+            margin-left: 1.5rem;
+            color: #334155;
+        }
+
+        .list-rapi li {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .list-rapi li strong { color: #0f172a; }
+
+        .highlight {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #dc2626;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-weight: 700;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .code-box {
+            background: rgba(15, 23, 42, 0.85);
+            color: #38bdf8;
+            padding: 15px;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 0.95rem;
+            margin: 15px 0;
+            overflow-x: auto;
+            border-left: 5px solid #3b82f6;
+            white-space: nowrap;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .code-box span { color: #f43f5e; }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 600px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        /* Mobile Responsif */
+        @media (max-width: 768px) {
+            .hero { padding: 2rem 15px; margin-top: 1rem; }
+            .hero-logos img { height: 90px; width: 90px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .btn-download { font-size: 1.1rem; padding: 1rem 1.5rem; width: 100%; }
+            .grid-2 { grid-template-columns: 1fr; gap: 1.5rem; }
+            .box-kaca { padding: 1.5rem; }
+            .box-kaca h3 { font-size: 1.3rem; }
+            .list-rapi li { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div style="font-size: 3.5rem; margin-bottom: 10px;"><i class="fa-solid fa-shield-halved"></i></div>
-        <h1>SMPN 1 DAMAI EXAMBRO</h1>
-        <p>Aplikasi Ujian Resmi Android - Aman, Ringan, dan Berintegritas</p>
+    <header class="hero glass">
+        <div class="hero-logos">
+            <img src="gambar/logo SMP1.jpg" alt="Logo SMPN 1 Damai">
+        </div>
         
-        <a href="https://github.com/alfisjahri/SMPN_1_Damai_Exambro/releases/download/1.0.0/SMPN1Damai-Exambro-v1.0.apk" class="btn-download">
-            <i class="fa-solid fa-cloud-arrow-down"></i> Download APK Sekarang
-        </a>
+        <div class="npp-badge"><i class="fa-solid fa-shield-check"></i> Ujian Aman & Terkendali</div>
+        
+        <h1>SMPN 1 DAMAI EXAMBRO</h1>
+        <p>Aplikasi Ujian Resmi Android - Terkunci, Ringan, dan Berintegritas Tinggi untuk Mencegah Kecurangan.</p>
+        
+        <div style="margin-top: 1rem;">
+            <a href="https://github.com/alfisjahri/SMPN_1_Damai_Exambro/releases/download/1.1/SMPN1Damai-Exambro_v1.1.apk" class="btn-download">
+                <i class="fa-solid fa-cloud-arrow-down"></i> Download APK Sekarang
+            </a>
+        </div>
     </header>
 
     <div class="container">
-        <div class="grid">
+        <div class="grid-2">
             
-            <div class="card">
-                <h2><i class="fa-solid fa-user-graduate"></i> Panduan Siswa (Download)</h2>
-                <ol>
-                    <li>Klik tombol <strong>Download APK Sekarang</strong> di atas dari HP Android kamu.</li>
+            <div class="box-kaca glass">
+                <h3><i class="fa-solid fa-user-graduate" style="color: #3b82f6;"></i> Panduan Siswa</h3>
+                <ol class="list-rapi">
+                    <li>Klik tombol <strong>Download APK</strong> di atas langsung dari HP Android kamu.</li>
                     <li>Setelah selesai mengunduh, buka file APK untuk menginstal.</li>
                     <li>Jika sistem memblokir, masuk ke <strong>Setelan / Settings</strong> lalu aktifkan opsi <strong>Izinkan dari sumber ini (Allow from this source)</strong>.</li>
-                    <li>Buka aplikasi Exambro setelah terpasang.</li>
-                    <li><strong>Wajib:</strong> Berikan izin akses kamera agar scanner QR berfungsi.</li>
-                    <li>Saat dialog sistem meminta mode kunci layar <i>(Screen Pinning)</i>, kamu <strong>WAJIB klik OKE / IZINKAN</strong>. Menolak akan memicu alarm.</li>
+                    <li>Buka aplikasi Exambro setelah berhasil terpasang.</li>
+                    <li><strong>Wajib:</strong> Berikan izin akses kamera saat aplikasi meminta agar scanner QR berfungsi.</li>
+                    <li>Saat dialog sistem meminta mode kunci layar <i>(Screen Pinning)</i>, kamu <strong>WAJIB klik OKE / IZINKAN</strong>. Menolak mode kunci akan memicu alarm pelanggaran.</li>
                 </ol>
             </div>
 
-            <div class="card">
-                <h2><i class="fa-solid fa-chalkboard-teacher"></i> Panduan Guru (Custom Sandi)</h2>
-                <p style="margin-bottom: 15px; color: #475569;">Sandi darurat untuk keluar dari aplikasi adalah <span class="highlight">guru123</span>. Guru/Panitia dapat mengatur sandi penutup yang unik via tautan soal.</p>
+            <div class="box-kaca glass">
+                <h3><i class="fa-solid fa-chalkboard-teacher" style="color: #10b981;"></i> Panduan Guru</h3>
+                <p style="margin-bottom: 15px; color: #475569; font-size: 0.95rem;">Sandi darurat bawaan untuk keluar dari aplikasi adalah <span class="highlight">guru123</span>. Panitia dapat mengatur sandi penutup unik untuk tiap sesi ujian.</p>
                 
-                <h3>Cara Modifikasi Link Ujian:</h3>
-                <p style="margin-top: 5px;">Sisipkan teks <span class="highlight">?pwd=sandi_anda</span> di paling ujung link sebelum diubah menjadi QR Code.</p>
+                <h4 style="color: #0f172a; margin-bottom: 8px;">Cara Modifikasi Tautan Ujian:</h4>
+                <p style="font-size: 0.95rem; color: #475569;">Sisipkan teks <span class="highlight">?pwd=sandi_pilihan</span> tepat di ujung link Google Forms/web ujian sebelum diubah menjadi QR Code.</p>
                 
                 <div class="code-box">
-                    https://docs.google.com/.../viewform<span>?pwd=selesai1</span>
+                    https://docs.google.com/forms/.../viewform<span>?pwd=ujianselesai</span>
                 </div>
 
-                <ul style="margin-top: 15px;">
-                    <li>Jika siswa memindai QR hasil tautan di atas, sandi keluar otomatis menjadi: <strong>selesai1</strong>.</li>
-                    <li><strong>Sifat Sandi:</strong> Bersifat sensitif terhadap huruf besar/kecil.</li>
-                    <li>Gunakan tautan penuh yang sudah dimodifikasi tersebut ke platform pembuat QR Code.</li>
+                <ul class="list-rapi" style="margin-top: 15px;">
+                    <li>Jika siswa memindai QR hasil tautan di atas, sandi keluar otomatis berubah menjadi: <strong>ujianselesai</strong>.</li>
+                    <li><strong>Sifat Sandi:</strong> Bersifat sensitif terhadap huruf besar/kecil (*case-sensitive*).</li>
+                    <li>Gunakan tautan penuh yang sudah dimodifikasi tersebut ke platform pembuat QR Code gratis.</li>
                 </ul>
             </div>
 
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Tim IT SMPN 1 Damai. All Rights Reserved.</p>
+    <footer class="glass">
+        &copy; 2026 Admin Web : Nur Alfi Syahri, S.P. All Rights Reserved.
     </footer>
 
 </body>
