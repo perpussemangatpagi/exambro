@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Exambro - SMPN 1 Damai</title>
     
+    <!-- FontAwesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -21,7 +22,7 @@
             overflow-x: hidden; 
         }
 
-        /* Latar Belakang Mesh Gradient (Identik Perpus & CMS) */
+        /* Latar Belakang Mesh Gradient */
         body {
             background-color: #f4f4f9;
             background-image: 
@@ -37,7 +38,7 @@
             align-items: center;
         }
 
-        /* Efek Kaca Identik Perpus (Radius 36px & Shadow Lembut) */
+        /* Efek Kaca */
         .glass {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(14px) saturate(140%);
@@ -138,7 +139,7 @@
 
         /* Container & Box Panduan */
         .container {
-            max-width: 800px; /* Disesuaikan untuk 1 kolom yang elegan */
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 20px 4rem;
             width: 100%;
@@ -171,39 +172,38 @@
             gap: 0.5rem;
         }
 
-        /* GAYA UNTUK VIDEO */
+        /* GAYA UNTUK DUA VIDEO BEDA ORIENTASI */
         .video-container {
             margin-bottom: 2rem;
             padding-bottom: 1.5rem;
             border-bottom: 1px dashed rgba(15, 23, 42, 0.2);
         }
 
-       .tutor-video-landscape {
+        .video-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        /* Khusus Video Vertikal (Hape Berdiri) */
+        .tutor-video-portrait {
             border-radius: 16px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             background-color: #000;
             width: 100%;
-            max-width: 100%; /* Dibiarkan 100% agar melebar penuh menyesuaikan kotak */
+            max-width: 260px; /* Dikunci biar gak ngelebar */
             height: auto;
-            display: block;
-            margin: 0 auto 15px auto;
         }
 
-        .placeholder-video {
-            width: 100%;
-            height: 250px;
-            border: 2px dashed rgba(15, 23, 42, 0.3);
+        /* Khusus Video Horizontal (Hape Tidur) */
+        .tutor-video-landscape {
             border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #475569;
-            font-weight: 600;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            text-align: center;
-            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            background-color: #000;
+            width: 100%;
+            max-width: 600px; /* Boleh lebar karena landscape */
+            height: auto;
         }
 
         .note {
@@ -213,9 +213,10 @@
             padding: 10px 15px;
             border-radius: 8px;
             border-left: 3px solid #dc2626;
+            text-align: justify;
         }
 
-        /* List & Teks */
+        /* List & Teks Diatur Justify */
         ol.list-rapi, ul.list-rapi {
             margin-left: 1.5rem;
             color: #334155;
@@ -226,7 +227,11 @@
             margin-bottom: 8px;
             font-size: 1.05rem;
             line-height: 1.6;
-            word-wrap: break-word; 
+            text-align: justify;
+        }
+
+        .info-section p {
+            text-align: justify;
         }
 
         .list-rapi li strong { color: #0f172a; }
@@ -239,7 +244,8 @@
             font-family: monospace;
             font-weight: 700;
             border: 1px solid rgba(239, 68, 68, 0.2);
-            word-break: break-all;
+            white-space: nowrap; 
+            display: inline-block;
         }
 
         .code-box {
@@ -271,9 +277,7 @@
             border-radius: 30px;
         }
 
-        /* ========================================= */
-        /* RESPONSIF MOBILE IDENTIK CMS/PERPUS       */
-        /* ========================================= */
+        /* RESPONSIF MOBILE */
         @media (max-width: 768px) {
             .hero { 
                 padding: 2.5rem 15px; 
@@ -300,7 +304,6 @@
             .box-kaca h3 { font-size: 1.3rem; }
             .list-rapi li { font-size: 1rem; }
             .code-box { font-size: 0.85rem; padding: 15px; }
-            .tutor-video { max-height: 350px; }
         }
     </style>
 </head>
@@ -308,6 +311,7 @@
 
     <header class="hero glass">
         <div class="hero-logos">
+            <!-- Path logo sesuai direktorinya -->
             <img src="gambar/logo SMP1.jpg" alt="Logo SMPN 1 Damai">
         </div>
         
@@ -328,35 +332,43 @@
         <div class="box-kaca glass">
             <h3><i class="fa-solid fa-book-open-reader" style="color: #3b82f6;"></i> Panduan Penggunaan</h3>
 
+            <!-- TUTORIAL 1: CARA INSTALL (VERTIKAL) -->
             <div class="video-container">
                 <h4>1. Cara Download & Install Aplikasi</h4>
-                <video controls class="tutor-video">
-                    <source src="gambar/tutor download & install.mp4" type="video/mp4">
-                    Browser Anda tidak mendukung pemutar video.
-                </video>
+                
+                <div class="video-wrapper">
+                    <!-- Class portrait dan source ke folder gambar -->
+                    <video controls class="tutor-video-portrait">
+                        <source src="gambar/tutor download & install.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung pemutar video.
+                    </video>
+                </div>
+
                 <div class="note">
                     <strong>*Catatan Penting:</strong> Jika sistem Android atau <em>Play Protect</em> memblokir instalasi (seperti di video), klik <strong>"More details"</strong> lalu pilih <strong>"Install anyway"</strong> atau aktifkan opsi <strong>"Izinkan dari sumber ini"</strong> di Pengaturan.
                 </div>
             </div>
 
+            <!-- TUTORIAL 2: CARA SCAN QR (HORIZONTAL) -->
             <div class="video-container">
-                <h4>2. Cara Modifikasi Sandi & Membuat QR Code (Khusus Guru)</h4>
-                <video controls class="tutor-video-landscape">
-                    <source src="gambar/tutor ganti sandi.mp4" type="video/mp4">
-                    Browser Anda tidak mendukung pemutar video.
-                </video>
-                <div class="note" style="background: rgba(59, 130, 246, 0.1); border-left-color: #3b82f6; color: #1d4ed8;">
-                    <strong>*Tips Panitia:</strong> Manfaatkan fitur <em>"Create QR Code"</em> bawaan browser Google Chrome di laptop untuk mencetak QR Code dengan cepat setelah link disisipkan kode sandi.
+                <h4>2. Cara Scan QR Ujian & Masukkan Password</h4>
+                
+                <div class="video-wrapper">
+                    <!-- Class landscape dan source ke folder gambar -->
+                    <video controls class="tutor-video-landscape">
+                        <source src="gambar/tutor ganti sandi.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung pemutar video.
+                    </video>
                 </div>
             </div>
-            </div>
 
+            <!-- INFO PENTING DAN PASSWORD DEFAULT -->
             <div class="info-section">
                 <h4><i class="fa-solid fa-circle-exclamation" style="color: #f59e0b;"></i> Informasi Umum & Sandi Bawaan</h4>
                 <ul class="list-rapi">
                     <li>Sandi bawaan (default) untuk mengizinkan keluar dari aplikasi ujian adalah <span class="highlight">guru123</span>.</li>
                     <li><strong>Wajib:</strong> Berikan izin akses kamera saat aplikasi meminta agar scanner QR berfungsi.</li>
-                    <li>Saat dialog sistem meminta mode kunci layar <i>(Screen Pinning)</i>, kamu <strong>WAJIB klik OKE / IZINKAN</strong>. Menolak mode kunci akan memicu alarm pelanggaran.</li>
+                    <li>Saat dialog sistem meminta mode kunci layar <i>(Screen Pinning)</i>, kamu <strong>WAJIB klik OKE / IZINKAN</strong>. Menolak mode kunci akan memicu pop-up sandi pelanggaran.</li>
                 </ul>
 
                 <h4 style="margin-top: 1.5rem;"><i class="fa-solid fa-user-gear" style="color: #10b981;"></i> Khusus Panitia/Guru (Modifikasi Sandi QR)</h4>
