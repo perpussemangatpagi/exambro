@@ -8,304 +8,75 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* Reset & Kunci Layar */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; scroll-behavior: smooth; }
+        html { scroll-padding-top: 100px; }
+        body { width: 100%; overflow-x: hidden; background-color: #f4f4f9; background-image: radial-gradient(at 20% 20%, rgba(56, 189, 248, 0.6) 0px, transparent 50%), radial-gradient(at 80% 10%, rgba(167, 139, 250, 0.6) 0px, transparent 50%), radial-gradient(at 10% 80%, rgba(251, 146, 60, 0.5) 0px, transparent 50%), radial-gradient(at 90% 90%, rgba(52, 211, 153, 0.5) 0px, transparent 50%); background-attachment: fixed; color: #1e293b; line-height: 1.6; display: flex; flex-direction: column; align-items: center; }
+        .glass { background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.5); border-radius: 24px; }
 
-        html, body {
-            width: 100%;
-            overflow-x: hidden; 
-        }
+        /* HEADER & NAVIGASI KEKINIAN (GAYA MAIN WEB) */
+        .header-container { position: sticky; top: 15px; z-index: 100; width: 92%; max-width: 1000px; margin: 0 auto; border-radius: 30px; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.25); border: 1px solid rgba(255, 255, 255, 0.4); }
+        .nav-brand { display: flex; align-items: center; gap: 12px; }
+        .nav-brand img { height: 35px; width: 35px; border-radius: 50%; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;}
+        .nav-brand .title { font-weight: 800; font-size: 1.1rem; color: #0f172a; letter-spacing: -0.5px; }
+        .nav-wrapper { position: relative; display: flex; align-items: center; flex: 1; justify-content: flex-end; max-width: 65%; }
+        nav { width: 100%; overflow: hidden; } 
+        nav ul { display: flex; gap: 1.2rem; list-style: none; overflow-x: auto; padding: 5px 35px; margin: 0; -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        nav ul::-webkit-scrollbar { display: none; }
+        nav ul li { flex: 0 0 auto; }
+        nav ul li a { text-decoration: none; color: #1e293b; font-weight: 700; font-size: 0.95rem; padding: 8px 12px; border-radius: 20px; transition: 0.3s; }
+        nav ul li a:hover { background: rgba(255,255,255,0.6); color: #0ea5e9; }
+        .nav-arrow { display: none; position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(255, 255, 255, 0.9); width: 32px; height: 32px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.15); cursor: pointer; color: #0ea5e9; font-weight: bold; z-index: 10; justify-content: center; align-items: center; }
+        .nav-arrow.left { left: 0; }
+        .nav-arrow.right { right: 0; }
 
-        /* Latar Belakang Mesh Gradient */
-        body {
-            background-color: #f4f4f9;
-            background-image: 
-                radial-gradient(at 20% 20%, rgba(56, 189, 248, 0.6) 0px, transparent 50%),
-                radial-gradient(at 80% 10%, rgba(167, 139, 250, 0.6) 0px, transparent 50%),
-                radial-gradient(at 10% 80%, rgba(251, 146, 60, 0.5) 0px, transparent 50%),
-                radial-gradient(at 90% 90%, rgba(52, 211, 153, 0.5) 0px, transparent 50%);
-            background-attachment: fixed;
-            color: #1e293b;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Efek Kaca */
-        .glass {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(14px) saturate(140%);
-            -webkit-backdrop-filter: blur(14px) saturate(140%);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.7);
-            border-radius: 36px;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 3rem 20px 2.5rem;
-            margin: 3rem auto 2rem;
-            max-width: 900px;
-            width: 92%; 
-        }
-
-        .hero-logos {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-logos img {
-            height: 110px;
-            width: 110px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
+        .hero { text-align: center; padding: 3rem 20px 2.5rem; margin: 2rem auto 2rem; max-width: 900px; width: 92%; }
+        .hero-logos { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+        .hero-logos img { height: 110px; width: 110px; object-fit: cover; border-radius: 50%; border: 3px solid white; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
         .hero-logos img:hover { transform: scale(1.05); }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 800; letter-spacing: -1px; color: #0f172a; line-height: 1.2; }
+        .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem; color: #334155; font-weight: 500; }
+        .npp-badge { display: inline-block; background: rgba(255, 255, 255, 0.6); padding: 0.5rem 1.5rem; border-radius: 30px; font-size: 0.9rem; font-weight: 800; margin-bottom: 1.2rem; border: 1px solid rgba(255, 255, 255, 0.8); color: #0ea5e9; text-transform: uppercase; letter-spacing: 1px; box-shadow: inset 0 2px 4px rgba(255,255,255,0.8); }
 
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            color: #0f172a;
-            line-height: 1.2;
-        }
+        @keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); } 70% { box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+        .btn-download { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #10b981; border: none; color: white; text-decoration: none; padding: 1.2rem 2.5rem; font-size: 1.2rem; font-weight: 800; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3); animation: pulse-glow 2s infinite; }
+        .btn-download:hover { background: #059669; transform: scale(1.05) translateY(-3px); animation: none; }
 
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: #334155;
-            font-weight: 500;
-        }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px 4rem; width: 100%; }
+        .box-kaca { padding: 2.5rem; width: 100%; background: rgba(255, 255, 255, 0.3); border-radius: 28px; }
+        .box-kaca h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: #0f172a; display: flex; align-items: center; gap: 0.8rem; border-bottom: 2px solid rgba(255,255,255,0.6); padding-bottom: 1rem; }
+        .box-kaca h4 { font-size: 1.15rem; color: #0f172a; margin-bottom: 10px; display: flex; align-items: center; gap: 0.5rem; }
 
-        .npp-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.6);
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 800;
-            margin-bottom: 1.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            color: #0ea5e9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.8);
-        }
+        .video-container { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px dashed rgba(15, 23, 42, 0.2); }
+        .video-container-no-border { margin-bottom: 1rem; padding-bottom: 0; border-bottom: none; }
+        .video-wrapper { display: flex; justify-content: center; width: 100%; margin-bottom: 15px; }
+        .tutor-video-portrait { border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); background-color: #000; width: 100%; max-width: 260px; height: auto; }
+        .tutor-video-landscape { border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); background-color: #000; width: 100%; max-width: 600px; height: auto; }
+        .note { font-size: 0.95rem; color: #dc2626; background: rgba(239, 68, 68, 0.1); padding: 10px 15px; border-radius: 8px; border-left: 3px solid #dc2626; text-align: justify; }
 
-        /* Animasi Tombol Download */
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
-            70% { box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-        }
-
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: #10b981;
-            border: none;
-            color: white;
-            text-decoration: none;
-            padding: 1.2rem 2.5rem;
-            font-size: 1.2rem;
-            font-weight: 800;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-            animation: pulse-glow 2s infinite;
-        }
-
-        .btn-download:hover {
-            background: #059669;
-            transform: scale(1.05) translateY(-3px);
-            animation: none;
-        }
-
-        /* Container & Box Panduan */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px 4rem;
-            width: 100%;
-        }
-
-        .box-kaca {
-            padding: 2.5rem;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.3); 
-            border-radius: 28px;
-        }
-
-        .box-kaca h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            border-bottom: 2px solid rgba(255,255,255,0.6);
-            padding-bottom: 1rem;
-        }
-
-        .box-kaca h4 {
-            font-size: 1.15rem;
-            color: #0f172a;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* GAYA UNTUK DUA VIDEO BEDA ORIENTASI */
-        .video-container {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px dashed rgba(15, 23, 42, 0.2);
-        }
-        
-        .video-container-no-border {
-            margin-bottom: 1rem;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .video-wrapper {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        /* Khusus Video Vertikal (Hape Berdiri) */
-        .tutor-video-portrait {
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            background-color: #000;
-            width: 100%;
-            max-width: 260px;
-            height: auto;
-        }
-
-        /* Khusus Video Horizontal (Hape Tidur) */
-        .tutor-video-landscape {
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            background-color: #000;
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-        }
-
-        .note {
-            font-size: 0.95rem;
-            color: #dc2626;
-            background: rgba(239, 68, 68, 0.1);
-            padding: 10px 15px;
-            border-radius: 8px;
-            border-left: 3px solid #dc2626;
-            text-align: justify;
-        }
-
-        /* List & Teks Diatur Justify */
-        ol.list-rapi, ul.list-rapi {
-            margin-left: 1.5rem;
-            color: #334155;
-            margin-bottom: 1rem;
-        }
-
-        .list-rapi li {
-            margin-bottom: 8px;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            text-align: justify;
-        }
-
-        .info-section p {
-            text-align: justify;
-        }
-
+        ol.list-rapi, ul.list-rapi { margin-left: 1.5rem; color: #334155; margin-bottom: 1rem; }
+        .list-rapi li { margin-bottom: 8px; font-size: 1.05rem; line-height: 1.6; text-align: justify; }
+        .info-section p { text-align: justify; }
         .list-rapi li strong { color: #0f172a; }
 
-        .highlight {
-            background-color: rgba(239, 68, 68, 0.15);
-            color: #dc2626;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-family: monospace;
-            font-weight: 700;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            white-space: nowrap; 
-            display: inline-block;
-        }
-
-        .code-box {
-            background: rgba(15, 23, 42, 0.85);
-            color: #38bdf8;
-            padding: 18px;
-            border-radius: 16px;
-            font-family: monospace;
-            font-size: 0.95rem;
-            margin: 15px 0;
-            border-left: 5px solid #3b82f6;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
-            white-space: pre-wrap;      
-            word-wrap: break-word;      
-            overflow-x: hidden;         
-        }
-        
+        .highlight { background-color: rgba(239, 68, 68, 0.15); color: #dc2626; padding: 2px 8px; border-radius: 6px; font-family: monospace; font-weight: 700; border: 1px solid rgba(239, 68, 68, 0.2); white-space: nowrap; display: inline-block; }
+        .code-box { background: rgba(15, 23, 42, 0.85); color: #38bdf8; padding: 18px; border-radius: 16px; font-family: monospace; font-size: 0.95rem; margin: 15px 0; border-left: 5px solid #3b82f6; box-shadow: inset 0 2px 10px rgba(0,0,0,0.3); white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden; }
         .code-box span { color: #f43f5e; }
+        footer { text-align: center; padding: 1.5rem; margin: 0 auto 2rem; width: 90%; max-width: 600px; font-size: 0.9rem; font-weight: 600; color: #334155; border-radius: 30px; }
 
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            margin: 0 auto 2rem;
-            width: 90%;
-            max-width: 600px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #334155;
-            border-radius: 30px;
-        }
-
-        /* RESPONSIF MOBILE */
         @media (max-width: 768px) {
-            .hero { 
-                padding: 2.5rem 15px; 
-                margin: 2rem auto 1.5rem; 
-                border-radius: 28px;
-            }
+            html { scroll-padding-top: 160px; }
+            .header-container { flex-direction: column; padding: 15px; gap: 15px; border-radius: 24px; margin-top: 10px;}
+            .nav-brand { justify-content: center; width: 100%; }
+            .nav-wrapper { width: 100%; max-width: 100%; justify-content: flex-start; }
+            nav ul { padding: 5px 30px 5px 10px; gap: 1rem; } 
+            
+            .hero { padding: 2.5rem 15px; margin: 1rem auto 1.5rem; border-radius: 28px; }
             .hero-logos img { height: 90px; width: 90px; }
             .hero h1 { font-size: 2.2rem; }
             .hero p { font-size: 1rem; }
-            
-            .btn-download { 
-                font-size: 1.1rem; 
-                padding: 1.2rem; 
-                width: 100%; 
-            }
-            
+            .btn-download { font-size: 1.1rem; padding: 1.2rem; width: 100%; }
             .container { padding: 0 15px 2rem; }
-            
-            .box-kaca { 
-                padding: 1.8rem 1.5rem; 
-                border-radius: 24px;
-            }
-            
+            .box-kaca { padding: 1.8rem 1.5rem; border-radius: 24px; }
             .box-kaca h3 { font-size: 1.3rem; }
             .list-rapi li { font-size: 1rem; }
             .code-box { font-size: 0.85rem; padding: 15px; }
@@ -313,6 +84,23 @@
     </style>
 </head>
 <body>
+
+    <header class="header-container glass">
+        <div class="nav-brand">
+            <img src="gambar/logo SMP1.jpg" alt="Logo SMPN 1 Damai">
+            <div class="title">Exambro CBT</div>
+        </div>
+        <div class="nav-wrapper">
+            <button class="nav-arrow left" onclick="scrollNav(-100)"><i class="fa-solid fa-chevron-left"></i></button>
+            <nav>
+                <ul id="nav-list">
+                    <li><a href="https://smpn1damai.web.id" style="color: #0ea5e9;"><i class="fa-solid fa-globe"></i> Web Utama</a></li>
+                    <li><a href="#panduan">Panduan Penggunaan</a></li>
+                </ul>
+            </nav>
+            <button class="nav-arrow right" onclick="scrollNav(100)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </header>
 
     <header class="hero glass">
         <div class="hero-logos">
@@ -332,8 +120,7 @@
     </header>
 
     <div class="container">
-        
-        <div class="box-kaca glass">
+        <div id="panduan" class="box-kaca glass">
             <h3><i class="fa-solid fa-book-open-reader" style="color: #3b82f6;"></i> Panduan Penggunaan</h3>
 
             <div class="video-container">
@@ -389,5 +176,25 @@
         &copy; 2026 | Admin Web: Nur Alfi Syahri, S.P.
     </footer>
 
+    <script>
+        const navList = document.getElementById('nav-list');
+        const arrowLeft = document.querySelector('.nav-arrow.left');
+        const arrowRight = document.querySelector('.nav-arrow.right');
+
+        function cekPanah() {
+            if(!navList || !arrowLeft || !arrowRight) return;
+            arrowLeft.style.display = navList.scrollLeft > 5 ? 'flex' : 'none';
+            const sisaScroll = navList.scrollWidth - navList.clientWidth - navList.scrollLeft;
+            arrowRight.style.display = sisaScroll > 5 ? 'flex' : 'none';
+        }
+
+        function scrollNav(jarak) { if(navList) navList.scrollBy({ left: jarak, behavior: 'smooth' }); }
+        
+        if(navList) {
+            navList.addEventListener('scroll', cekPanah);
+            window.addEventListener('resize', cekPanah);
+            setTimeout(cekPanah, 500); 
+        }
+    </script>
 </body>
 </html>
