@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Exambro - SMPN 1 Damai</title>
     
-    <!-- FontAwesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -178,6 +177,12 @@
             padding-bottom: 1.5rem;
             border-bottom: 1px dashed rgba(15, 23, 42, 0.2);
         }
+        
+        .video-container-no-border {
+            margin-bottom: 1rem;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
 
         .video-wrapper {
             display: flex;
@@ -192,7 +197,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             background-color: #000;
             width: 100%;
-            max-width: 260px; /* Dikunci biar gak ngelebar */
+            max-width: 260px;
             height: auto;
         }
 
@@ -202,7 +207,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             background-color: #000;
             width: 100%;
-            max-width: 600px; /* Boleh lebar karena landscape */
+            max-width: 600px;
             height: auto;
         }
 
@@ -311,7 +316,6 @@
 
     <header class="hero glass">
         <div class="hero-logos">
-            <!-- Path logo sesuai direktorinya -->
             <img src="gambar/logo SMP1.jpg" alt="Logo SMPN 1 Damai">
         </div>
         
@@ -332,12 +336,10 @@
         <div class="box-kaca glass">
             <h3><i class="fa-solid fa-book-open-reader" style="color: #3b82f6;"></i> Panduan Penggunaan</h3>
 
-            <!-- TUTORIAL 1: CARA INSTALL (VERTIKAL) -->
             <div class="video-container">
                 <h4>1. Cara Download & Install Aplikasi</h4>
                 
                 <div class="video-wrapper">
-                    <!-- Class portrait dan source ke folder gambar -->
                     <video controls class="tutor-video-portrait">
                         <source src="gambar/tutor download & install.mp4" type="video/mp4">
                         Browser Anda tidak mendukung pemutar video.
@@ -349,20 +351,6 @@
                 </div>
             </div>
 
-            <!-- TUTORIAL 2: CARA SCAN QR (HORIZONTAL) -->
-            <div class="video-container">
-                <h4>2. Cara Scan QR Ujian & Masukkan Password</h4>
-                
-                <div class="video-wrapper">
-                    <!-- Class landscape dan source ke folder gambar -->
-                    <video controls class="tutor-video-landscape">
-                        <source src="gambar/tutor ganti sandi.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung pemutar video.
-                    </video>
-                </div>
-            </div>
-
-            <!-- INFO PENTING DAN PASSWORD DEFAULT -->
             <div class="info-section">
                 <h4><i class="fa-solid fa-circle-exclamation" style="color: #f59e0b;"></i> Informasi Umum & Sandi Bawaan</h4>
                 <ul class="list-rapi">
@@ -371,15 +359,26 @@
                     <li>Saat dialog sistem meminta mode kunci layar <i>(Screen Pinning)</i>, kamu <strong>WAJIB klik OKE / IZINKAN</strong>. Menolak mode kunci akan memicu pop-up sandi pelanggaran.</li>
                 </ul>
 
-                <h4 style="margin-top: 1.5rem;"><i class="fa-solid fa-user-gear" style="color: #10b981;"></i> Khusus Panitia/Guru (Modifikasi Sandi QR)</h4>
+                <h4 style="margin-top: 2rem;"><i class="fa-solid fa-user-gear" style="color: #10b981;"></i> Khusus Panitia/Guru (Modifikasi Sandi QR)</h4>
                 <p style="color: #475569; margin-bottom: 10px;">Jika ingin mengubah sandi keluar untuk sesi ujian tertentu, sisipkan teks <span class="highlight">?pwd=sandi_pilihan</span> tepat di ujung link Google Forms sebelum link tersebut diubah menjadi gambar QR Code.</p>
                 
                 <div class="code-box">https://docs.google.com/forms/.../viewform<span>?pwd=ujianselesai</span></div>
                 
-                <ul class="list-rapi">
+                <ul class="list-rapi" style="margin-bottom: 1.5rem;">
                     <li>Jika siswa memindai QR dari tautan di atas, sandi keluar aplikasi akan otomatis berubah menjadi: <strong>ujianselesai</strong>.</li>
                     <li>Sifat pembacaan sandi sensitif terhadap huruf besar/kecil.</li>
                 </ul>
+
+                <div class="video-container-no-border">
+                    <h4 style="font-size: 1.05rem; color: #475569; margin-bottom: 15px;"><i class="fa-solid fa-video" style="color: #ef4444;"></i> Video Tutorial Modifikasi Sandi:</h4>
+                    <div class="video-wrapper">
+                        <video controls class="tutor-video-landscape">
+                            <source src="gambar/tutor ganti sandi.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung pemutar video.
+                        </video>
+                    </div>
+                </div>
+
             </div>
 
         </div>
