@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Exambro - SMPN 1 Damai</title>
     
-    <!-- FontAwesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -137,24 +136,18 @@
             animation: none;
         }
 
-        /* Grid Panduan */
+        /* Container & Box Panduan */
         .container {
-            max-width: 950px;
+            max-width: 800px; /* Disesuaikan untuk 1 kolom yang elegan */
             margin: 0 auto;
             padding: 0 20px 4rem;
             width: 100%;
         }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
         .box-kaca {
             padding: 2.5rem;
             width: 100%;
-            background: rgba(255, 255, 255, 0.3); /* Sedikit lebih solid untuk teks */
+            background: rgba(255, 255, 255, 0.3); 
             border-radius: 28px;
         }
 
@@ -169,13 +162,67 @@
             padding-bottom: 1rem;
         }
 
+        .box-kaca h4 {
+            font-size: 1.15rem;
+            color: #0f172a;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* GAYA UNTUK VIDEO */
+        .video-container {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed rgba(15, 23, 42, 0.2);
+        }
+
+        .tutor-video {
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            background-color: #000;
+            width: 100%;
+            max-height: 450px; /* Biar ngga menuhin layar kalo vertikal */
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .placeholder-video {
+            width: 100%;
+            height: 250px;
+            border: 2px dashed rgba(15, 23, 42, 0.3);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-weight: 600;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .note {
+            font-size: 0.95rem;
+            color: #dc2626;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 3px solid #dc2626;
+        }
+
+        /* List & Teks */
         ol.list-rapi, ul.list-rapi {
             margin-left: 1.5rem;
             color: #334155;
+            margin-bottom: 1rem;
         }
 
         .list-rapi li {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-size: 1.05rem;
             line-height: 1.6;
             word-wrap: break-word; 
@@ -244,12 +291,6 @@
             
             .container { padding: 0 15px 2rem; }
             
-            .grid-2 { 
-                display: flex; 
-                flex-direction: column; 
-                gap: 1.5rem; 
-            }
-            
             .box-kaca { 
                 padding: 1.8rem 1.5rem; 
                 border-radius: 24px;
@@ -258,6 +299,7 @@
             .box-kaca h3 { font-size: 1.3rem; }
             .list-rapi li { font-size: 1rem; }
             .code-box { font-size: 0.85rem; padding: 15px; }
+            .tutor-video { max-height: 350px; }
         }
     </style>
 </head>
@@ -281,37 +323,50 @@
     </header>
 
     <div class="container">
-        <div class="grid-2">
-            
-            <div class="box-kaca glass">
-                <h3><i class="fa-solid fa-user-graduate" style="color: #3b82f6;"></i> Panduan Siswa</h3>
-                <ol class="list-rapi">
-                    <li>Klik tombol <strong>Download APK</strong> di atas langsung dari HP Android kamu.</li>
-                    <li>Setelah selesai mengunduh, buka file APK untuk menginstal.</li>
-                    <li>Jika sistem memblokir, masuk ke <strong>Setelan / Settings</strong> lalu aktifkan opsi <strong>Izinkan dari sumber ini (Allow from this source)</strong>.</li>
-                    <li>Buka aplikasi Exambro setelah berhasil terpasang.</li>
-                    <li><strong>Wajib:</strong> Berikan izin akses kamera saat aplikasi meminta agar scanner QR berfungsi.</li>
-                    <li>Saat dialog sistem meminta mode kunci layar <i>(Screen Pinning)</i>, kamu <strong>WAJIB klik OKE / IZINKAN</strong>. Menolak mode kunci akan memicu pop up password pelanggaran.</li>
-                </ol>
+        
+        <div class="box-kaca glass">
+            <h3><i class="fa-solid fa-book-open-reader" style="color: #3b82f6;"></i> Panduan Penggunaan</h3>
+
+            <div class="video-container">
+                <h4>1. Cara Download & Install Aplikasi</h4>
+                <video controls class="tutor-video">
+                    <source src="gambar/tutor download & install.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung pemutar video.
+                </video>
+                <div class="note">
+                    <strong>*Catatan Penting:</strong> Jika sistem Android atau <em>Play Protect</em> memblokir instalasi (seperti di video), klik <strong>"More details"</strong> lalu pilih <strong>"Install anyway"</strong> atau aktifkan opsi <strong>"Izinkan dari sumber ini"</strong> di Pengaturan.
+                </div>
             </div>
 
-            <div class="box-kaca glass">
-                <h3><i class="fa-solid fa-chalkboard-teacher" style="color: #10b981;"></i> Panduan Guru</h3>
-                <p style="margin-bottom: 15px; color: #475569; font-size: 1rem;">Sandi darurat bawaan untuk keluar dari aplikasi adalah <span class="highlight">guru123</span>. Panitia dapat mengatur sandi penutup unik untuk tiap sesi ujian.</p>
-                
-                <h4 style="color: #0f172a; margin-bottom: 8px;">Cara Modifikasi Tautan Ujian:</h4>
-                <p style="font-size: 1rem; color: #475569;">Sisipkan teks <span class="highlight">?pwd=sandi_pilihan</span> tepat di ujung link Google Forms/web ujian sebelum diubah menjadi QR Code.</p>
+            <div class="video-container">
+                <h4>2. Cara Scan QR Ujian & Masukkan Password</h4>
+                <div class="placeholder-video glass">
+                    <i class="fa-solid fa-video" style="font-size: 2rem; margin-bottom: 10px; color: #94a3b8;"></i>
+                    <p>Video tutorial cara masuk dan keluar ujian sedang disiapkan (Menyusul)...</p>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h4><i class="fa-solid fa-circle-exclamation" style="color: #f59e0b;"></i> Informasi Umum & Sandi Bawaan</h4>
+                <ul class="list-rapi">
+                    <li>Sandi bawaan (default) untuk mengizinkan keluar dari aplikasi ujian adalah <span class="highlight">guru123</span>.</li>
+                    <li><strong>Wajib:</strong> Berikan izin akses kamera saat aplikasi meminta agar scanner QR berfungsi.</li>
+                    <li>Saat dialog sistem meminta mode kunci layar <i>(Screen Pinning)</i>, kamu <strong>WAJIB klik OKE / IZINKAN</strong>. Menolak mode kunci akan memicu alarm pelanggaran.</li>
+                </ul>
+
+                <h4 style="margin-top: 1.5rem;"><i class="fa-solid fa-user-gear" style="color: #10b981;"></i> Khusus Panitia/Guru (Modifikasi Sandi QR)</h4>
+                <p style="color: #475569; margin-bottom: 10px;">Jika ingin mengubah sandi keluar untuk sesi ujian tertentu, sisipkan teks <span class="highlight">?pwd=sandi_pilihan</span> tepat di ujung link Google Forms sebelum link tersebut diubah menjadi gambar QR Code.</p>
                 
                 <div class="code-box">https://docs.google.com/forms/.../viewform<span>?pwd=ujianselesai</span></div>
-
-                <ul class="list-rapi" style="margin-top: 15px;">
-                    <li>Jika siswa memindai QR hasil tautan di atas, sandi keluar otomatis berubah menjadi: <strong>ujianselesai</strong>.</li>
-                    <li><strong>Sifat Sandi:</strong> Sensitif terhadap huruf besar/kecil.</li>
-                    <li>Gunakan tautan penuh yang dimodifikasi tersebut ke platform pembuat QR Code gratis.</li>
+                
+                <ul class="list-rapi">
+                    <li>Jika siswa memindai QR dari tautan di atas, sandi keluar aplikasi akan otomatis berubah menjadi: <strong>ujianselesai</strong>.</li>
+                    <li>Sifat pembacaan sandi sensitif terhadap huruf besar/kecil.</li>
                 </ul>
             </div>
 
         </div>
+
     </div>
 
     <footer class="glass">
