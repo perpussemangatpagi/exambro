@@ -180,12 +180,13 @@
 
         .tutor-video {
             border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             background-color: #000;
             width: 100%;
-            max-height: 450px; /* Biar ngga menuhin layar kalo vertikal */
-            object-fit: contain;
-            margin-bottom: 10px;
+            max-width: 260px; /* Mengunci lebar maksimal layaknya fisik HP */
+            height: auto; /* Biar tingginya otomatis menyesuaikan proporsi video */
+            display: block;
+            margin: 0 auto 15px auto; /* Memaksa video berada di tengah-tengah kotak */
         }
 
         .placeholder-video {
