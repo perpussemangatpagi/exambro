@@ -11,16 +11,40 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; scroll-behavior: smooth; }
         html { scroll-padding-top: 100px; }
         body { width: 100%; overflow-x: hidden; background-color: #f4f4f9; background-image: radial-gradient(at 20% 20%, rgba(56, 189, 248, 0.6) 0px, transparent 50%), radial-gradient(at 80% 10%, rgba(167, 139, 250, 0.6) 0px, transparent 50%), radial-gradient(at 10% 80%, rgba(251, 146, 60, 0.5) 0px, transparent 50%), radial-gradient(at 90% 90%, rgba(52, 211, 153, 0.5) 0px, transparent 50%); background-attachment: fixed; color: #1e293b; line-height: 1.6; display: flex; flex-direction: column; align-items: center; }
-        .glass { background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.5); border-radius: 24px; }
+        
+        /* ========================================================
+           EFEK KACA (GLASSMORPHISM) 100% SINKRON DENGAN WEB UTAMA 
+           ======================================================== */
+        .glass {
+            background: rgba(255, 255, 255, 0.95); 
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
 
-        /* HEADER & NAVIGASI KEKINIAN (GAYA MAIN WEB) - Dibuat Lebih Pendek */
-        .header-container { position: sticky; top: 15px; z-index: 100; width: 92%; max-width: 1000px; margin: 0 auto; border-radius: 30px; padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.25); border: 1px solid rgba(255, 255, 255, 0.4); }
+        @supports (backdrop-filter: blur(14px)) or (-webkit-backdrop-filter: blur(14px)) {
+            .glass {
+                background: rgba(255, 255, 255, 0.45); 
+                -webkit-backdrop-filter: blur(14px) saturate(140%);
+                backdrop-filter: blur(14px) saturate(140%);
+                border-top: 1.5px solid rgba(255, 255, 255, 0.9);
+                border-left: 1.5px solid rgba(255, 255, 255, 0.9);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                border-right: 1px solid rgba(255, 255, 255, 0.2);
+                box-shadow: 
+                    0 15px 35px rgba(0, 0, 0, 0.1), 
+                    inset 0 1px 2px rgba(255, 255, 255, 0.9), 
+                    inset 0 -1px 2px rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        /* HEADER & NAVIGASI (Background manual dihapus biar .glass berfungsi maksimal) */
+        .header-container { position: sticky; top: 15px; z-index: 100; width: 92%; max-width: 1000px; margin: 0 auto; border-radius: 30px; padding: 8px 25px; display: flex; justify-content: space-between; align-items: center; } /* Padding atas-bawah dibikin 8px biar langsing! */
         .nav-brand { display: flex; align-items: center; gap: 12px; }
-        .nav-brand img { height: 35px; width: 35px; border-radius: 50%; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;}
-        .nav-brand .title { font-weight: 800; font-size: 1.1rem; color: #0f172a; letter-spacing: -0.5px; }
+        .nav-brand img { height: 40px; width: 40px; border-radius: 50%; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;}
+        .nav-brand .title { font-weight: 800; font-size: 1.2rem; color: #0f172a; letter-spacing: -0.5px; } /* Ukuran font disamakan dengan web utama */
         .nav-wrapper { position: relative; display: flex; align-items: center; flex: 1; justify-content: flex-end; max-width: 65%; }
         nav { width: 100%; overflow: hidden; } 
-        nav ul { display: flex; gap: 1.2rem; list-style: none; overflow-x: auto; padding: 5px 35px; margin: 0; -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        nav ul { display: flex; gap: 1.2rem; list-style: none; overflow-x: auto; padding: 5px 45px; margin: 0; -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
         nav ul::-webkit-scrollbar { display: none; }
         nav ul li { flex: 0 0 auto; }
         nav ul li a { text-decoration: none; color: #1e293b; font-weight: 700; font-size: 0.95rem; padding: 8px 12px; border-radius: 20px; transition: 0.3s; }
@@ -29,7 +53,7 @@
         .nav-arrow.left { left: 0; }
         .nav-arrow.right { right: 0; }
 
-        .hero { text-align: center; padding: 3rem 20px 2.5rem; margin: 2rem auto 2rem; max-width: 900px; width: 92%; }
+        .hero { text-align: center; padding: 3rem 20px 2.5rem; margin: 2rem auto 2rem; max-width: 900px; width: 92%; border-radius: 28px; }
         .hero-logos { display: flex; justify-content: center; margin-bottom: 1.5rem; }
         .hero-logos img { height: 110px; width: 110px; object-fit: cover; border-radius: 50%; border: 3px solid white; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
         .hero-logos img:hover { transform: scale(1.05); }
@@ -42,7 +66,7 @@
         .btn-download:hover { background: #059669; transform: scale(1.05) translateY(-3px); animation: none; }
 
         .container { max-width: 800px; margin: 0 auto; padding: 0 20px 4rem; width: 100%; }
-        .box-kaca { padding: 2.5rem; width: 100%; background: rgba(255, 255, 255, 0.3); border-radius: 28px; }
+        .box-kaca { padding: 2.5rem; width: 100%; border-radius: 28px; } /* Background manual dihapus biar .glass tembus! */
         .box-kaca h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: #0f172a; display: flex; align-items: center; gap: 0.8rem; border-bottom: 2px solid rgba(255,255,255,0.6); padding-bottom: 1rem; }
         .box-kaca h4 { font-size: 1.15rem; color: #0f172a; margin-bottom: 10px; display: flex; align-items: center; gap: 0.5rem; }
 
@@ -62,32 +86,21 @@
         .code-box { background: rgba(15, 23, 42, 0.85); color: #38bdf8; padding: 18px; border-radius: 16px; font-family: monospace; font-size: 0.95rem; margin: 15px 0; border-left: 5px solid #3b82f6; box-shadow: inset 0 2px 10px rgba(0,0,0,0.3); white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden; }
         .code-box span { color: #f43f5e; }
         
-        /* FOOTER ADMIN - Dibuat Polosan */
+        /* FOOTER ADMIN - Dibuat Polosan Tanpa Kaca */
         footer { 
-            text-align: center; 
-            padding: 1.5rem; 
-            margin: 0 auto 2rem; 
-            width: 90%; 
-            max-width: 600px; 
-            font-size: 0.9rem; 
-            font-weight: 600; 
-            color: #334155; 
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
+            text-align: center; padding: 1.5rem; margin: 0 auto 2rem; width: 90%; max-width: 600px; font-size: 0.9rem; font-weight: 600; color: #334155; 
+            background: transparent !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; 
         }
 
         @media (max-width: 768px) {
             html { scroll-padding-top: 160px; }
-            /* Navbar HP Dirapetin */
-            .header-container { flex-direction: column; padding: 10px; gap: 8px; border-radius: 24px; margin-top: 10px;}
+            /* Penyesuaian navbar mode HP agar pendek dan rapi */
+            .header-container { flex-direction: column; padding: 10px 15px; gap: 10px; border-radius: 24px; margin-top: 10px;}
             .nav-brand { justify-content: center; width: 100%; }
             .nav-wrapper { width: 100%; max-width: 100%; justify-content: flex-start; }
             nav ul { padding: 5px 30px 5px 10px; gap: 1rem; } 
             
-            .hero { padding: 2.5rem 15px; margin: 1rem auto 1.5rem; border-radius: 28px; }
+            .hero { padding: 2.5rem 15px; margin: 1rem auto 1.5rem; border-radius: 24px; }
             .hero-logos img { height: 90px; width: 90px; }
             .hero h1 { font-size: 2.2rem; }
             .hero p { font-size: 1rem; }
@@ -189,7 +202,7 @@
 
     </div>
 
-    <!-- Hapus class glass di sini -->
+    <!-- Hapus class glass di bagian footer supaya bener-bener polos menyatu background -->
     <footer>
         &copy; 2026 | Admin Web: Nur Alfi Syahri, S.P.
     </footer>
